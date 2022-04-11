@@ -14,7 +14,8 @@ handler.post(
   "api/comments/:commentId",
   async (req: Request, res: NextApiResponse) => {
     const session = await getSession({ req });
-    const uId: string | undefined | null = session?.user?.id;
+    // @ts-ignore
+    const uId = session.user.id;
     if (!uId) {
       return res.status(401).json({ message: "Pas connecté ?" });
     }
