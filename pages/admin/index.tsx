@@ -61,7 +61,8 @@ export async function getServerSideProps(context: any) {
 
   const user: any = await prisma.user.findUnique({
     where: {
-      id: sessionUser!.id!
+      // @ts-ignore
+      id: sessionUser.id
     }
   });
 
