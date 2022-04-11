@@ -50,7 +50,8 @@ handler.get(
   async (req: Request, res: NextApiResponse) => {
     const { action, userId } = req.params;
     const session = await getSession({ req });
-    const uId = session?.user?.id;
+    // @ts-ignore
+    const uId = session.user.id;
     if (!uId) {
       return res.status(401).json({ message: "Pas connecté ?" });
     }
