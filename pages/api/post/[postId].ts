@@ -23,11 +23,11 @@ handler.delete(
     const { postId } = req.params;
     const session = await getSession({ req });
 
-    if (!session) {
+    if (!session || !session.user) {
       console.log("no one here");
       return;
     }
-    const uId = session.user!.id;
+    const uId = session.user.id;
 
     if (!uId) {
       console.log("no uId");
@@ -80,7 +80,11 @@ handler.put("api/post/:postId", async (req: Request, res: NextApiResponse) => {
 
   // Do a credentials check
   const session = await getSession({ req });
-  const uId: string | undefined | null = session?.user?.id;
+  if (!session || !session.user) {
+    console.log("no one here");
+    return;
+  }
+  const uId = session.user.id;
   if (!uId) {
     return res.status(401).json({ message: "Pas connecté ?" });
   }

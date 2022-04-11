@@ -20,8 +20,10 @@ handler.use(middleware);
 //
 handler.post(async (req: Request, res: NextApiResponse) => {
   const session = await getSession({ req });
-  // type definition for session.user.id in nodemodules/next-auth/core/types.d.ts
-  const uId: string | undefined | null = session?.user?.id;
+  if (!session || !session.user) {
+    return res.status(401).json({ message: "Pas autorisé" });
+  }
+  const uId = session.user.id;
   if (!uId) {
     return res.status(401).json({ message: "Pas connecté ?" });
   }
@@ -72,8 +74,10 @@ handler.post(async (req: Request, res: NextApiResponse) => {
 //
 handler.get(async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await getSession({ req });
-  // type definition for session.user.id in nodemodules/next-auth/core/types.d.ts
-  const uId: string | undefined | null = session?.user?.id;
+  if (!session || !session.user) {
+    return res.status(401).json({ message: "Pas autorisé" });
+  }
+  const uId = session.user.id;
   if (!uId) {
     return res.status(401).json({ message: "Pas connecté ?" });
   }

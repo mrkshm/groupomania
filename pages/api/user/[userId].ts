@@ -8,6 +8,7 @@ import { prisma } from "../../../db";
 import fs from "fs";
 import { getSession } from "next-auth/react";
 import fileSaver from "../../../src/utils/fileSaver";
+import invariant from "tiny-invariant";
 
 interface GetRequest extends NextApiRequest {
   params: { userId: string };
@@ -20,6 +21,9 @@ handler.get(
   "api/user/:userId",
   async (req: GetRequest, res: NextApiResponse) => {
     const session = await getSession({ req });
+    if (!session) {
+      return res.status(401).json({ message: "Pas autorisé." });
+    }
     const { userId } = req.params;
 
     try {
@@ -54,7 +58,10 @@ handler.put(
   "api/user/:userId",
   async (req: RequestWithFile, res: NextApiResponse) => {
     const session = await getSession({ req });
-    const sessionUser: any = session?.user;
+    if (!session || !session.user) {
+      return res.status(401).json({ message: "Pas autorisé." });
+    }
+    const sessionUser = session.user;
     const solicitorId = req.body.userId[0];
     if (solicitorId !== sessionUser.id) {
       console.log("users not identidal");
@@ -133,7 +140,10 @@ handler.delete(
   "api/user/:userId",
   async (req: Request, res: NextApiResponse) => {
     const session = await getSession({ req });
-    const sessionUser: any = session?.user;
+    if (!session || !session.user) {
+      return res.status(401).json({ message: "Pas autorisé." });
+    }
+    const sessionUser = session.user;
     const { userId } = req.params;
     if (userId !== sessionUser.id) {
       console.log("users not identidal");

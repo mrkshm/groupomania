@@ -7,7 +7,11 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const session = await getSession({ req });
-  // @ts-ignore
+
+  if (!session || !session.user) {
+    return res.status(401).json({ message: "Pas autorisé" });
+  }
+
   const userId = session.user.id;
   if (!userId) {
     return res.status(401).json({ message: "Pas authentifié ?" });

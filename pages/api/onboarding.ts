@@ -21,6 +21,10 @@ handler.use(middleware);
 handler.post(async (req: Request, res: NextApiResponse) => {
   const session = await getSession({ req });
 
+  if (!session) {
+    return res.status(401).json({ message: "Pas autorisé." });
+  }
+
   const existingUsername = await prisma.user.findUnique({
     where: {
       name: req.body.name[0]

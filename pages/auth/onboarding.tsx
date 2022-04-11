@@ -33,7 +33,6 @@ Onboarding.getInitialProps = async (context: any) => {
     return;
   }
 
-  console.log("session is", session);
   const sessionUser = session.user;
 
   if (session && session.user && session.user.name) {

@@ -14,7 +14,10 @@ handler.post(
   "api/comments/:commentId",
   async (req: Request, res: NextApiResponse) => {
     const session = await getSession({ req });
-    // @ts-ignore
+
+    if (!session || !session.user) {
+      return res.status(500).json({ message: "Il y avait un erreur" });
+    }
     const uId = session.user.id;
     if (!uId) {
       return res.status(401).json({ message: "Pas connecté ?" });
@@ -44,7 +47,12 @@ handler.delete(
   "api/comments/:commentId",
   async (req: Request, res: NextApiResponse) => {
     const session = await getSession({ req });
-    const uId: string | undefined | null = session?.user?.id;
+
+    if (!session || !session.user) {
+      return res.status(500).json({ message: "Il y avait un erreur." });
+    }
+
+    const uId = session.user.id;
     if (!uId) {
       return res.status(401).json({ message: "Pas connecté ?" });
     }
