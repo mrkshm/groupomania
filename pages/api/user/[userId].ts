@@ -63,6 +63,7 @@ handler.put(
     }
     const sessionUser = session.user;
     const solicitorId = req.body.userId[0];
+    // @ts-ignore
     if (solicitorId !== sessionUser.id) {
       console.log("users not identidal");
       return res.status(401).json({ message: "Non autorisé" });

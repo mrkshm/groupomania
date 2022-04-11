@@ -27,6 +27,7 @@ handler.delete(
       console.log("no one here");
       return;
     }
+    // @ts-ignore
     const uId = session.user.id;
 
     if (!uId) {
@@ -84,6 +85,7 @@ handler.put("api/post/:postId", async (req: Request, res: NextApiResponse) => {
     console.log("no one here");
     return;
   }
+  // @ts-ignore
   const uId = session.user.id;
   if (!uId) {
     return res.status(401).json({ message: "Pas connecté ?" });
