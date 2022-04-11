@@ -146,8 +146,9 @@ handler.delete(
     }
     const sessionUser = session.user;
     const { userId } = req.params;
+    // @ts-ignore
     if (userId !== sessionUser.id) {
-      console.log("users not identidal");
+      console.log("users not identical");
       return res.status(401).json({ message: "Non autorisé" });
     }
 
