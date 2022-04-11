@@ -17,10 +17,15 @@ handler.get(
     console.log("START");
 
     const session = await getSession({ req });
-    const uId: string | undefined | null = session?.user?.id;
+
+    if (!session || !session.user) {
+      return res.status(401).json({ message: "Pas autorisé" });
+    }
+    const uId = session.user.id;
     if (!uId) {
       return res.status(401).json({ message: "Pas connecté ?" });
     }
+
     const { postId } = req.params;
     const numPostId = Number(postId);
 
