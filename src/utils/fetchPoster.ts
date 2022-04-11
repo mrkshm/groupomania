@@ -1,4 +1,4 @@
-const fetchPoster = async (url: string, payload: FormData | String) => {
+const fetchPoster = async (url: string, payload: any) => {
   const res = await fetch(url, {
     method: "POST",
     body: payload
