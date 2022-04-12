@@ -229,12 +229,6 @@ function UserSidebar({ sessionUser, user, mutateUser }: UserSidebarProps) {
               <Button colorScheme={"red"} onClick={closeAccount}>
                 Supprimer le compte
               </Button>
-              <ChakraImage
-                mt={4}
-                maxW={"90%"}
-                alt="Photo de l'utilisateur·rice"
-                src={`/assets/happy-worker.jpg`}
-              />
             </AccordionPanel>
           </AccordionItem>
         </Accordion>
