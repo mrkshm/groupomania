@@ -187,7 +187,7 @@ function UserSidebar({ sessionUser, user, mutateUser }: UserSidebarProps) {
             mt={4}
             maxW={"90%"}
             alt="Photo de l'utilisateur·rice"
-            src={`/assets/${user.image}`}
+            src={`/${user.image}`}
           />
         )}
 
