@@ -36,5 +36,5 @@ yarn-error.log*
 *.tsbuildinfo
 
 # images but include assets
-public/*
-!public/assets
+# public/*
+# !public/assets
