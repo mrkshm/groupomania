@@ -48,9 +48,12 @@ function CommentCard({
   uId
 }: CommentCardProps) {
   const formatter = buildFormatter(frenchStrings);
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   const [userVoteDisp, setUserVoteDisp] = useState(comment.userVote);
   const [voteScoreDisp, setVoteScoreDisp] = useState(comment.voteScore);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  console.log("voteScoreDisp is", voteScoreDisp);
 
   const deleteComment = async () => {
     console.log("deleting");
@@ -60,6 +63,8 @@ function CommentCard({
     commentCount ? setCommentCount((commentCount -= 1)) : null;
     mutate();
   };
+
+  console.log("comment", comment);
 
   const formik = useFormik({
     initialValues: {

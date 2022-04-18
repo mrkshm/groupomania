@@ -10,8 +10,14 @@ import { getSession, useSession } from "next-auth/react";
 import Feed from "../components/Feed";
 
 const Home: NextPage = articles => {
+  const triggerSession = async () => {
+    const res = await getSession();
+    return res;
+  };
+
   const session = useSession();
-  const sessionUser: any = session.data?.user;
+
+  const sessionUser = session.data?.user;
 
   return (
     <Container maxW="container.xl" p={0}>
@@ -33,7 +39,8 @@ const Home: NextPage = articles => {
         <Box w={{ base: "100%", sm: "50%" }} p={4}>
           {sessionUser ? (
             <>
-              <Input user={sessionUser} />
+              <Input sessionUser={sessionUser} />
+              {console.log("sesh from index", sessionUser)}
               <Feed feedUrl="posts" sessionUser={sessionUser} />
             </>
           ) : (
@@ -51,7 +58,7 @@ const Home: NextPage = articles => {
             my={4}
             p={4}
           >
-            <News articles={articles} />
+            {articles ? <News articles={articles} /> : <Spinner />}
           </Box>
         </Box>
       </Flex>
@@ -73,7 +80,26 @@ export async function getServerSideProps(context: any) {
     };
   }
 
-  const sessionUser = session.user;
+  const sessionUser = await prisma.user.findUnique({
+    where: {
+      // @ts-ignore
+      id: session.user.id
+    }
+  });
+
+  if (!sessionUser) {
+    console.log("nothing found");
+
+    return;
+  }
+  // @ts-ignore
+  sessionUser.emailVerified = String(sessionUser.emailVerified);
+  // @ts-ignore
+  sessionUser.createdAt = String(sessionUser.createdAt);
+  // @ts-ignore
+  sessionUser.updatedAt = String(sessionUser.updatedAt);
+
+  console.log("User is", sessionUser);
 
   // get news
   const results = await fetch(
@@ -82,7 +108,6 @@ export async function getServerSideProps(context: any) {
   return {
     props: {
       articles: results.articles,
-      sesh: session,
       sessionUser: sessionUser
     }
   };

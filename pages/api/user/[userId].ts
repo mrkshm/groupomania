@@ -186,6 +186,47 @@ handler.delete(
   }
 );
 
+handler.post("api/user/:userId", async (req: Request, res: NextApiResponse) => {
+  const session = await getSession({ req });
+  if (!session || !session.user) {
+    return res.status(401).json({ message: "Pas autorisé." });
+  }
+  const sessionUser = session.user;
+  const { userId } = req.params;
+  // @ts-ignore
+  if (userId !== sessionUser.id) {
+    console.log("users not identical");
+    return res.status(401).json({ message: "Non autorisé" });
+  }
+
+  const user = await prisma.user.findUnique({
+    where: {
+      id: userId
+    }
+  });
+
+  if (!user) {
+    return res.status(500).json({ message: "Utilisateur pas trouvé" });
+  }
+
+  if (user.image) {
+    fs.unlink(`./public/${user.image}`, () => {
+      console.log("old image deleted");
+    });
+  }
+
+  try {
+    const deletedUser = await prisma.user.delete({
+      where: {
+        id: userId
+      }
+    });
+    return res.status(201).json(deletedUser);
+  } catch (error) {
+    return res.status(500).json({ message: "Utilisateur pas supprimé." });
+  }
+});
+
 export const config = {
   api: {
     bodyParser: false

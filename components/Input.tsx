@@ -1,12 +1,31 @@
-import React from "react";
-
-import { Avatar, Box, Input as ChakraInput, Flex } from "@chakra-ui/react";
+import React, { useState } from "react";
+import {
+  Avatar,
+  Box,
+  Input as ChakraInput,
+  Flex,
+  Spinner
+} from "@chakra-ui/react";
 import { AddMediaImage } from "iconoir-react";
 import { useRouter } from "next/router";
-import { UserObjectType } from "../src/types/index";
+import fetcher from "../src/utils/fetcher";
 
-function Input({ user }: UserObjectType) {
+function Input({ sessionUser }: any) {
   const router = useRouter();
+  console.log("hello");
+
+  const [userImage, setUserImage] = useState(sessionUser.image);
+
+  const localUser = fetch(`/api/user/${sessionUser.id}`, { method: "GET" })
+    .then(res => res.json())
+    .then(res => {
+      if (res.image !== sessionUser.image) {
+        setUserImage(res.image);
+      }
+    })
+    .catch();
+
+  console.log(localUser);
 
   const createPost = () => {
     router.push("/create");
@@ -14,11 +33,18 @@ function Input({ user }: UserObjectType) {
 
   return (
     <Box width={{ base: "100%", sm: "90%" }}>
-      <Flex onClick={createPost} gap={4} alignItems={"center"}>
-        <Avatar name={user.name ? user.name : user.email} src={user.image} />
-        <ChakraInput placeholder="Créer une publication" size="lg" />
-        <AddMediaImage fontSize={"28"} />
-      </Flex>
+      {sessionUser ? (
+        <Flex onClick={createPost} gap={4} alignItems={"center"}>
+          <Avatar
+            name={sessionUser.name ? sessionUser.name : sessionUser.email}
+            src={userImage}
+          />
+          <ChakraInput placeholder="Créer une publication" size="lg" />
+          <AddMediaImage fontSize={"28"} />
+        </Flex>
+      ) : (
+        <Spinner />
+      )}
     </Box>
   );
 }

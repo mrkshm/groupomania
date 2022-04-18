@@ -51,6 +51,16 @@ function UserSidebar({ sessionUser, user, mutateUser }: UserSidebarProps) {
     signOut();
   };
 
+  const annihilateAccount = async () => {
+    const url = `/api/user/${user.id}`;
+    const res = await fetch(url, { method: "POST" });
+    if (!res.ok) {
+      console.log("Il y avait un erreur.");
+      return;
+    }
+    signOut();
+  };
+
   const deletePhoto = async () => {
     console.log("delete photo");
     const url = `/api/user/${user.id}`;
@@ -121,6 +131,8 @@ function UserSidebar({ sessionUser, user, mutateUser }: UserSidebarProps) {
 
     onOpen();
   };
+
+  console.log(user);
 
   return user ? (
     <Box w={{ base: "100%" }} p={4}>
@@ -226,7 +238,12 @@ function UserSidebar({ sessionUser, user, mutateUser }: UserSidebarProps) {
               <AccordionIcon />
             </AccordionButton>
             <AccordionPanel>
-              <Button colorScheme={"red"} onClick={closeAccount}>
+              <Button colorScheme={"blue"} onClick={closeAccount}>
+                Dèsactiver le compte
+              </Button>
+            </AccordionPanel>
+            <AccordionPanel>
+              <Button colorScheme={"red"} onClick={annihilateAccount}>
                 Supprimer le compte
               </Button>
             </AccordionPanel>
