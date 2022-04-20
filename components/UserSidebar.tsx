@@ -21,6 +21,8 @@ import {
   useDisclosure,
   Spinner
 } from "@chakra-ui/react";
+import ReactMarkdown from "react-markdown";
+import ChakraUIRenderer from "chakra-ui-markdown-renderer";
 import { Mail } from "iconoir-react";
 import TimeAgo from "react-timeago";
 // @ts-ignore
@@ -186,8 +188,12 @@ function UserSidebar({ sessionUser, user, mutateUser }: UserSidebarProps) {
           ) : null}
         </Flex>
       </Box>
+      {user.body ? (
+        <ReactMarkdown components={ChakraUIRenderer()} skipHtml>
+          {user.body}
+        </ReactMarkdown>
+      ) : null}
 
-      <Text>{user.body}</Text>
       {sessionUser.id === user.id ? (
         <Button mt={2} id="body" onClick={changeProfile as any} size={"xs"}>
           Modifier votre descrition

@@ -9,6 +9,8 @@ import {
   Image as ChakraImage
 } from "@chakra-ui/react";
 import React, { useState } from "react";
+import ReactMarkdown from "react-markdown";
+import ChakraUIRenderer from "chakra-ui-markdown-renderer";
 import NextLink from "next/link";
 import { UpRoundArrow, DownRoundArrow, MessageText } from "iconoir-react";
 import voteHelper from "../src/utils/voteHelper";
@@ -94,7 +96,13 @@ function PostCard({
         style={{ textDecoration: "none" }}
       >
         <Box mt={2}>
-          <Text noOfLines={4}>{body === "" ? null : body}</Text>
+          {body ? (
+            <Text noOfLines={4}>
+              <ReactMarkdown components={ChakraUIRenderer()} skipHtml>
+                {body}
+              </ReactMarkdown>
+            </Text>
+          ) : null}
         </Box>
         <Box mt={2}>
           {image === "" ? null : (

@@ -18,6 +18,8 @@ import {
   ModalCloseButton,
   useDisclosure
 } from "@chakra-ui/react";
+import ReactMarkdown from "react-markdown";
+import ChakraUIRenderer from "chakra-ui-markdown-renderer";
 import { UpRoundArrow, DownRoundArrow } from "iconoir-react";
 import { CommentType } from "../src/types";
 import { useFormik } from "formik";
@@ -123,7 +125,9 @@ function CommentCard({
           />
         </Flex>
         <Box>
-          <Text>{comment.body}</Text>
+          <ReactMarkdown components={ChakraUIRenderer()} skipHtml>
+            {comment.body}
+          </ReactMarkdown>
           <Flex gap={1} mt={2}>
             <Text fontSize="sm">
               Publié par{" "}
