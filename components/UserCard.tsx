@@ -44,7 +44,7 @@ function UserCard({ user }: UserCardProps) {
           <Box mt="2">{user.body}</Box>
         </Box>
         <Link href={`/u/${user.name}`}>
-          <Avatar ml={8} name={user.name} src={user.image} />
+          <Avatar ml={8} name={user.name} src={`/api/images${user.image}`} />
         </Link>
       </Flex>
     </Box>

@@ -87,7 +87,7 @@ function PostCardFull({
         </Box>
         <Box mt={2}>
           {post.image === "" ? null : (
-            <ChakraImage w={"100%"} mb={8} src={`/${post.image}`} />
+            <ChakraImage w={"100%"} mb={8} src={`/api/images/${post.image}`} />
           )}
         </Box>
         <Flex justifyContent={"space-between"} alignItems={"center"}>

@@ -8,6 +8,7 @@ import { getSession } from "next-auth/react";
 import fs from "fs";
 import imageNamer from "../../../src/utils/imageNamer";
 import fileSaver from "../../../src/utils/fileSaver";
+import deleteFile from "../../../src/utils/deleteFile";
 
 interface Request extends NextApiRequest {
   params: { postId: string };
@@ -57,9 +58,9 @@ handler.delete(
       });
     }
 
-    fs.unlink(`./public/${postToDelete.image}`, () => {
-      console.log("old image deleted");
-    });
+    if (postToDelete.image) {
+      deleteFile(postToDelete.image);
+    }
 
     try {
       await prisma.post.delete({
@@ -126,19 +127,19 @@ handler.put("api/post/:postId", async (req: Request, res: NextApiResponse) => {
         .json({ message: "la taille de l'image ne peut pas depasser 8 Mo." });
     }
     newImageName = imageNamer(imageFile.originalFilename);
+
     await fileSaver(imageFile, newImageName);
-    fs.unlink(`./public/${post.image}`, () => {
-      console.log("old image deleted");
-    });
+
+    if (post.image) {
+      deleteFile(post.image);
+    }
   }
 
   // Do the updating
   let imageName = newImageName ? newImageName : post.image;
 
-  if (deleteImage === "true") {
-    fs.unlink(`./public/${post.image}`, () => {
-      console.log("deleted");
-    });
+  if (deleteImage === "true" && !req.files.image && post.image) {
+    deleteFile(post.image);
     imageName = "";
   }
 

@@ -97,7 +97,9 @@ function PostCard({
           <Text noOfLines={4}>{body === "" ? null : body}</Text>
         </Box>
         <Box mt={2}>
-          {image === "" ? null : <ChakraImage w={"100px "} src={`/${image}`} />}
+          {image === "" ? null : (
+            <ChakraImage w={"100px "} src={`/api/images/${image}`} />
+          )}
         </Box>
       </Link>
       <Flex alignItems={"center"} justifyContent={"space-between"}>

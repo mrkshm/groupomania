@@ -80,15 +80,18 @@ function CommentFeed({
 
   return (
     <Flex mt={8} alignItems={"center"} flexDirection={"column"}>
-      <Flex gap={8} my={2}>
-        <Button onClick={setVoteDesc} variant="ghost" leftIcon={<Trophy />}>
-          Meilleur
-        </Button>
+      {!comments || comments.length < 2 ? null : (
+        <Flex gap={8} my={2}>
+          <Button onClick={setVoteDesc} variant="ghost" leftIcon={<Trophy />}>
+            Meilleur
+          </Button>
 
-        <Button onClick={setDateDesc} variant="ghost" leftIcon={<Flower />}>
-          Nouveau
-        </Button>
-      </Flex>
+          <Button onClick={setDateDesc} variant="ghost" leftIcon={<Flower />}>
+            Nouveau
+          </Button>
+        </Flex>
+      )}
+
       <Box maxW="2xl" width={"100%"}>
         {comments ? (
           comments

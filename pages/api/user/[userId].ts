@@ -8,7 +8,7 @@ import { prisma } from "../../../db";
 import fs from "fs";
 import { getSession } from "next-auth/react";
 import fileSaver from "../../../src/utils/fileSaver";
-import invariant from "tiny-invariant";
+import deleteFile from "../../../src/utils/deleteFile";
 
 interface GetRequest extends NextApiRequest {
   params: { userId: string };
@@ -98,13 +98,11 @@ handler.put(
 
       newImageName = imageNamer(imageFile.originalFilename);
 
-      console.log("new name is", newImageName);
-
       await fileSaver(imageFile, newImageName);
 
-      fs.unlink(`./public/${user.image}`, () => {
-        console.log("old image deleted");
-      });
+      if (user.image) {
+        deleteFile(user.image);
+      }
     }
 
     user.name = newUsername ? newUsername.trim() : user.name;
@@ -137,6 +135,7 @@ interface Request extends NextApiRequest {
   };
 }
 
+// delete photo (not user)
 handler.delete(
   "api/user/:userId",
   async (req: Request, res: NextApiResponse) => {
@@ -166,11 +165,8 @@ handler.delete(
       return res.status(200).json({ message: "Rien à supprimer." });
     }
 
-    fs.unlink(`./public/${user.image}`, () => {
-      console.log("old image deleted");
-    });
-
     try {
+      await deleteFile(user.image);
       const updatedUser = await prisma.user.update({
         where: {
           id: userId

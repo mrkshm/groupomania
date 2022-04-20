@@ -123,7 +123,7 @@ function PostEdit({ tags, post, sessionUser, mutatePost }: PostEditType) {
           <Box>
             {post.image ? (
               <Image
-                src={`/${post.image}`}
+                src={`/api/images/${post.image}`}
                 maxW="150px"
                 maxH="150px"
                 alt="Image du post"

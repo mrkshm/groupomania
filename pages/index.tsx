@@ -107,8 +107,7 @@ export async function getServerSideProps(context: any) {
   ).then(res => res.json());
   return {
     props: {
-      articles: results.articles,
-      sessionUser: sessionUser
+      articles: results.articles
     }
   };
 }
