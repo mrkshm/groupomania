@@ -1,4 +1,5 @@
 import React from "react";
+import ReactMarkdown from "react-markdown";
 import { useRouter } from "next/router";
 import {
   Badge,
@@ -83,7 +84,7 @@ function PostCardFull({
           </Flex>
         </Box>
         <Box mt={2}>
-          <Text>{post.body === "" ? null : post.body}</Text>
+          <ReactMarkdown>{post.body === "" ? null : post.body}</ReactMarkdown>
         </Box>
         <Box mt={2}>
           {post.image === "" ? null : (

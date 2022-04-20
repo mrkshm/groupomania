@@ -10,11 +10,13 @@ import {
   Select
 } from "@chakra-ui/react";
 import React from "react";
+import { useRouter } from "next/router";
 import { TagType } from "../src/types";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
 function PostCreate({ tags }: any) {
+  const router = useRouter();
   const formik = useFormik({
     initialValues: {
       file: "",
@@ -44,7 +46,10 @@ function PostCreate({ tags }: any) {
         body: post
       })
         .then(res => res.json())
-        .then(res => console.log(res))
+        .then(res => {
+          console.log(res);
+          router.push("/");
+        })
         .catch(err => console.log(err));
     }
   });
