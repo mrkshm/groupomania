@@ -108,8 +108,7 @@ handler.put(
     user.name = newUsername ? newUsername.trim() : user.name;
     user.body = newBody ? newBody.trim() : user.body;
     user.email = newEmail ? newEmail.trim() : user.email;
-    user.image =
-      newImageName && newImageName !== "" ? newImageName : user.image;
+    user.image = user.image;
 
     try {
       const updatedUser = await prisma.user.update({
