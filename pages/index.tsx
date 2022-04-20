@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import Head from "next/head";
+import MetaHead from "../components/MetaHead";
 import { prisma } from "../db";
 import Tags from "../components/Tags";
 import { Container, Box, Flex, Spinner } from "@chakra-ui/react";
@@ -21,14 +21,7 @@ const Home: NextPage = articles => {
 
   return (
     <Container maxW="container.xl" p={0}>
-      <Head>
-        <title>Groupomania</title>
-        <meta
-          name="description"
-          content="Le reseau social de votre entreprise."
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <MetaHead />
       <Header />
       <Flex
         flexDirection={{ base: "column-reverse", sm: "row" }}
