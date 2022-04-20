@@ -1,5 +1,6 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
+import ChakraUIRenderer from "chakra-ui-markdown-renderer";
 import { useRouter } from "next/router";
 import {
   Badge,
@@ -84,7 +85,9 @@ function PostCardFull({
           </Flex>
         </Box>
         <Box mt={2}>
-          <ReactMarkdown>{post.body === "" ? null : post.body}</ReactMarkdown>
+          <ReactMarkdown components={ChakraUIRenderer()} skipHtml>
+            {post.body === "" ? null : post.body}
+          </ReactMarkdown>
         </Box>
         <Box mt={2}>
           {post.image === "" ? null : (
