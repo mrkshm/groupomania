@@ -99,7 +99,7 @@ function PostCard({
           {body ? (
             <Text noOfLines={3}>
               <ReactMarkdown
-                components={ChakraUIRenderer({ h1: "h2" })}
+                components={ChakraUIRenderer({ h1: "h3" })}
                 skipHtml
               >
                 {body}
