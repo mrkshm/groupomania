@@ -8,7 +8,7 @@ const LoginComp = () => {
       </Heading>
       <Text my={8} maxW={{ base: "100%", sm: "70%" }}>
         Un email avec un lien pour vous connecter vous a été envoyé. Si vous
-        n&apos;avez rien récu, veuillez regarder dans votre dossier Spam. Sinon,
+        n&apos;avez rien réçu, veuillez regarder dans votre dossier Spam. Sinon,
         veuillez contacter l&apos;administrateur.
       </Text>
     </Container>

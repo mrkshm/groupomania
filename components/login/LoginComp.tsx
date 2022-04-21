@@ -90,7 +90,7 @@ const LoginComp = ({ providers, csrfToken, signIn }: any) => {
           })}
         </Stack>
         <Text fontSize="xs" my={8}>
-          En cliquant sur &quot;Connéxion&quot;, vous acceptez les{" "}
+          En cliquant sur &quot;Connexion&quot;, vous acceptez les{" "}
           <Link onClick={onOpen}>CGU</Link> de Groupomania.
           <br />
           Nous gardons vos données strictement confidentielles.

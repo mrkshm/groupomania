@@ -6,7 +6,7 @@ const cOfC = [
   "Souvenez vous d'être humain.",
   "Comportez-vous comme vous le feriez dans la vraie vie (ou mieux).",
   "Si vous partagez quelque chose, citez la source originale, si possible.",
-  "Cherchez des doublons potentiels avant de publier.",
+  "Vous pouvez utiliser <a href='https://www.markdownguide.org/cheat-sheet/'>Markdown</a> dans vos messages.",
   "Profitez !"
 ];
 

@@ -90,7 +90,7 @@ function OnboardingForm() {
     >
       <VStack spacing={3} alignItems="flex-start">
         <Text fontSize={"xl"} mb={2}>
-          Encore quelques petit pas avant que vous pouvez participer...
+          Encore quelques petits pas avant que vous puissiez participer...
         </Text>
         <form onSubmit={formik.handleSubmit}>
           <SimpleGrid columns={2} columnGap={3} rowGap={6} w="full">
@@ -128,7 +128,7 @@ function OnboardingForm() {
                   minH={32}
                   name="body"
                   id="body"
-                  placeholder="Comme j'ai liberée la France des Anglais."
+                  placeholder="Comment j'ai liberé la France des Anglais."
                   value={formik.values.body}
                   onBlur={formik.handleBlur("body")}
                   onChange={formik.handleChange("body")}
