@@ -58,7 +58,6 @@ function CommentCard({
 
   const [userVoteDisp, setUserVoteDisp] = useState(comment.userVote);
   const [voteScoreDisp, setVoteScoreDisp] = useState(comment.voteScore);
-  console.log("voteScoreDisp is", voteScoreDisp);
 
   const deleteComment = async () => {
     console.log("deleting");
