@@ -53,15 +53,16 @@ function CreateComment({
         sessionUserId: uId
       })
     });
-    if (!res.ok) {
-      console.log("Il y avait un erreur...");
-      return;
-    }
-    onClose();
+    // if (!res.ok) {
+    //   console.log("Il y avait un erreur...");
+    //   return;
+    // }
+
     // const resJ = await res.json();
     values.newComment = "";
     setCommentAdded(true);
     setCommentCount((commentCount += 1));
+    onClose();
   };
 
   const formik = useFormik({
