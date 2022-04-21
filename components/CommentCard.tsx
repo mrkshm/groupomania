@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Text,
@@ -21,10 +21,11 @@ import {
 import ReactMarkdown from "react-markdown";
 import ChakraUIRenderer from "chakra-ui-markdown-renderer";
 import { UpRoundArrow, DownRoundArrow } from "iconoir-react";
-import { CommentType } from "../src/types";
+import { CommentType, UserType } from "../src/types";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import fetchPoster from "../src/utils/fetchPoster";
+import fetcher from "../src/utils/fetcher";
 
 import TimeAgo from "react-timeago";
 // @ts-ignore
@@ -51,6 +52,8 @@ function CommentCard({
 }: CommentCardProps) {
   const formatter = buildFormatter(frenchStrings);
 
+  const [localUser, setLocalUser] = useState<UserType | null>();
+
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [userVoteDisp, setUserVoteDisp] = useState(comment.userVote);
@@ -66,7 +69,11 @@ function CommentCard({
     mutate();
   };
 
-  console.log("comment", comment);
+  useEffect(() => {
+    fetcher(`/api/user/uId`)
+      .then(res => setLocalUser(res))
+      .catch(err => console.log(err));
+  }, []);
 
   const formik = useFormik({
     initialValues: {
@@ -135,7 +142,7 @@ function CommentCard({
             </Text>
             <TimeAgo date={comment.createdAt} formatter={formatter} />
           </Flex>
-          {uId === comment.userId ? (
+          {localUser && localUser.isAdmin ? (
             <Button
               onClick={deleteComment}
               mt={2}
