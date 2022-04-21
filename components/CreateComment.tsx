@@ -57,8 +57,7 @@ function CreateComment({
       console.log("Il y avait un erreur...");
       return;
     }
-    const resJ = await res.json();
-    console.log(resJ);
+    // const resJ = await res.json();
     values.newComment = "";
     setCommentAdded(true);
     setCommentCount((commentCount += 1));
