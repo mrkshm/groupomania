@@ -57,11 +57,11 @@ function CreateComment({
       console.log("Il y avait un erreur...");
       return;
     }
+    onClose();
     // const resJ = await res.json();
     values.newComment = "";
     setCommentAdded(true);
     setCommentCount((commentCount += 1));
-    onClose();
   };
 
   const formik = useFormik({
