@@ -70,7 +70,7 @@ const LoginComp = ({ providers, csrfToken, signIn }: any) => {
               </FormLabel>
             </FormControl>
             <Button colorScheme={"blue"} type="submit">
-              Connéxion avec Email
+              Connexion avec Email
             </Button>
           </form>
         </Box>
@@ -83,7 +83,7 @@ const LoginComp = ({ providers, csrfToken, signIn }: any) => {
             return (
               <Box key={provider.name}>
                 <Button variant="outline" onClick={() => signIn(provider.id)}>
-                  Connéxion avec {provider.name}
+                  Connexion avec {provider.name}
                 </Button>
               </Box>
             );
