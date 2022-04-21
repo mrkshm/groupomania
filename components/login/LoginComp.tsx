@@ -52,8 +52,9 @@ const LoginComp = ({ providers, csrfToken, signIn }: any) => {
         Bienvenue chez Groupomania
       </Heading>
       <Text my={8} maxW={{ base: "100%", sm: "70%" }}>
-        Vous pouvez vous connecter avec votre email ou avec votre compte GitHub
-        ou Google. C&apos;est à vous !{" "}
+        Vous pouvez vous inscrire (ou, si vous avez déjà un compte, vous
+        connecter) avec seulement votre adresse email, ou avec votre compte
+        GitHub ou Google. C&apos;est à vous !{" "}
       </Text>
       <Box marginTop={12}>
         <Box
