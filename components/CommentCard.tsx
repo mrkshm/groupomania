@@ -70,7 +70,7 @@ function CommentCard({
   };
 
   useEffect(() => {
-    fetcher(`/api/user/uId`)
+    fetcher(`/api/user/${uId}`)
       .then(res => setLocalUser(res))
       .catch(err => console.log(err));
   }, []);
