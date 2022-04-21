@@ -8,11 +8,9 @@ import {
 } from "@chakra-ui/react";
 import { AddMediaImage } from "iconoir-react";
 import { useRouter } from "next/router";
-import fetcher from "../src/utils/fetcher";
 
 function Input({ sessionUser }: any) {
   const router = useRouter();
-  console.log("hello");
 
   const [userImage, setUserImage] = useState(sessionUser.image);
 
@@ -24,8 +22,6 @@ function Input({ sessionUser }: any) {
       }
     })
     .catch();
-
-  console.log(localUser);
 
   const createPost = () => {
     router.push("/create");

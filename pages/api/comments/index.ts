@@ -6,8 +6,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  console.log("hello from Back");
-
   const session = await getSession({ req });
 
   if (!session || !session.user) {

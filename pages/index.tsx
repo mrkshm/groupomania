@@ -33,7 +33,6 @@ const Home: NextPage = articles => {
           {sessionUser ? (
             <>
               <Input sessionUser={sessionUser} />
-              {console.log("sesh from index", sessionUser)}
               <Feed feedUrl="posts" sessionUser={sessionUser} />
             </>
           ) : (
