@@ -75,7 +75,11 @@ function Feed({ feedUrl, sessionUser }: PostCardProps) {
 
   return (
     <Box>
-      <Flex gap={8} my={8}>
+      <Flex
+        gap={{ base: 1, sm: 8 }}
+        my={8}
+        direction={{ base: "column", sm: "row" }}
+      >
         <Button onClick={setVoteDesc} variant="ghost" leftIcon={<Trophy />}>
           Meilleur
         </Button>

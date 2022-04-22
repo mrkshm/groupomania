@@ -60,7 +60,12 @@ function PostCardFull({
   };
   return (
     <Flex justifyContent={"center"}>
-      <Box maxW={"2xl"} borderWidth="1px" borderRadius={"lg"} p={8}>
+      <Box
+        maxW={{ base: "100vw", sm: "2xl" }}
+        borderWidth="1px"
+        borderRadius={"lg"}
+        p={8}
+      >
         <Flex justifyContent={"space-between"}>
           <Heading mb={4}>{post.title}</Heading>
           <Link href={`/p/${post.tagName}`}>
@@ -94,7 +99,11 @@ function PostCardFull({
             <ChakraImage w={"100%"} mb={8} src={`/api/images/${post.image}`} />
           )}
         </Box>
-        <Flex justifyContent={"space-between"} alignItems={"center"}>
+        <Flex
+          justifyContent={"space-between"}
+          alignItems={"center"}
+          direction={{ base: "column", sm: "row" }}
+        >
           <Flex gap={2} mr={4}>
             <MessageText />
             {commentCount ? commentCount : 0}{" "}
@@ -102,12 +111,22 @@ function PostCardFull({
           </Flex>
 
           {sessionUser && sessionUser.id === post.userId ? (
-            <Button mr={4} onClick={editPost} colorScheme={"blue"}>
+            <Button
+              mr={4}
+              onClick={editPost}
+              colorScheme={"blue"}
+              mt={{ base: 2, sm: 0 }}
+            >
               Edit
             </Button>
           ) : null}
           {sessionUser.isAdmin ? (
-            <Button mr={4} onClick={editPost} colorScheme={"red"}>
+            <Button
+              mr={4}
+              mt={{ base: 2, sm: 0 }}
+              onClick={editPost}
+              colorScheme={"red"}
+            >
               Supprimer
             </Button>
           ) : null}

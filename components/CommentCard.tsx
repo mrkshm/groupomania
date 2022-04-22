@@ -134,12 +134,14 @@ function CommentCard({
           <ReactMarkdown components={ChakraUIRenderer()} skipHtml>
             {comment.body}
           </ReactMarkdown>
-          <Flex gap={1} mt={2}>
+          <Flex gap={1} mt={2} direction={{ base: "column", sm: "row" }}>
             <Text fontSize="sm">
               Publié par{" "}
               <Link href={`u/${comment.username}`}>{comment.username}</Link>
             </Text>
-            <TimeAgo date={comment.createdAt} formatter={formatter} />
+            <Text fontSize="sm">
+              <TimeAgo date={comment.createdAt} formatter={formatter} />
+            </Text>
           </Flex>
           {localUser && localUser.isAdmin ? (
             <Button

@@ -81,7 +81,7 @@ function PostCard({
         </Link>
       </Flex>
       <Box fontSize="sm">
-        <Flex gap={1}>
+        <Flex gap={1} direction={{ base: "column", sm: "row" }}>
           <div>
             Publié par <Link href={`/u/${userName}`}>{userName}</Link>
           </div>
@@ -100,7 +100,11 @@ function PostCard({
           )}
         </Box>
       </Link>
-      <Flex alignItems={"center"} justifyContent={"space-between"}>
+      <Flex
+        alignItems={"center"}
+        justifyContent={"space-between"}
+        direction={{ base: "column", sm: "row" }}
+      >
         <NextLink href={`/p/${tagName}/${identifier}/${slug}`} passHref>
           <Button
             aria-label="J'aime"
