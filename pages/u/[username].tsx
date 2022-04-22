@@ -21,6 +21,7 @@ import { SessionUserObjectType } from "../../src/types";
 function Profile({ sessionUser }: SessionUserObjectType) {
   const router = useRouter();
   const { username } = router.query;
+
   const getUserUrl = `/api/user/name/${username}`;
 
   const {

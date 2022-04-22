@@ -39,12 +39,12 @@ export default NextAuth({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET
     }),
-    // GoogleProvider({
-    // @ts-ignore
-    // clientId: process.env.GOOGLE_ID,
-    // @ts-ignore
-    // clientSecret: process.env.GOOGLE_SECRET
-    // }),
+    GoogleProvider({
+      // @ts-ignore
+      clientId: process.env.GOOGLE_ID,
+      // @ts-ignore
+      clientSecret: process.env.GOOGLE_SECRET
+    }),
     EmailProvider({
       server: process.env.EMAIL_SERVER,
       from: process.env.EMAIL_FROM

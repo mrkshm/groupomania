@@ -20,11 +20,14 @@ handler.use(middleware);
 handler.get(
   "api/user/:userId",
   async (req: GetRequest, res: NextApiResponse) => {
+    const { userId } = req.params;
+    console.log("User from url is", userId);
+
     const session = await getSession({ req });
+
     if (!session) {
       return res.status(401).json({ message: "Pas autorisé." });
     }
-    const { userId } = req.params;
 
     try {
       const user: any = await prisma.user.findUnique({
