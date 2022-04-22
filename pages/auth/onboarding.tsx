@@ -33,7 +33,12 @@ Onboarding.getInitialProps = async (context: any) => {
     return;
   }
 
-  if (session && session.user && session.user.name) {
+  if (
+    session &&
+    session.user &&
+    session.user.name &&
+    !session.user.name.includes(" ")
+  ) {
     res.writeHead(302, {
       Location: "/"
     });
