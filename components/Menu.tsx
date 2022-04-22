@@ -38,12 +38,17 @@ function Menu() {
 
   const { toggleColorMode } = useColorMode();
   const SwitchIcon = useColorModeValue(HalfMoon, LightBulb);
+  const modeTitle = useColorModeValue("Mode Sombre", "Mode Clair");
 
   const MENUITEMS = [
     { name: "Home", function: goHome, icon: <Home /> },
     { name: "Profil", function: goToProfile, icon: <User /> },
     { name: "Annuaire", function: goToUserlist, icon: <Group /> },
-    { name: "Mode sombre", function: toggleColorMode, icon: <SwitchIcon /> },
+    {
+      name: modeTitle,
+      function: toggleColorMode,
+      icon: <SwitchIcon />
+    },
     { name: "Déconnexion", function: signOut, icon: <LogOut /> }
   ];
 

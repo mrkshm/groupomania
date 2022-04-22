@@ -59,7 +59,7 @@ handler.post(async (req: Request, res: NextApiResponse) => {
 
     newImageName = imageNamer(imageFile.originalFilename);
 
-    fileSaver(imageFile, newImageName);
+    await fileSaver(imageFile, newImageName);
   }
 
   const updateUser = await prisma.user.update({
