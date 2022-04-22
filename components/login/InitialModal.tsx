@@ -10,8 +10,7 @@ import {
   Input,
   FormErrorMessage,
   Button,
-  ModalFooter,
-  Text
+  ModalFooter
 } from "@chakra-ui/react";
 
 import * as Yup from "yup";
