@@ -83,6 +83,7 @@ function Feed({ feedUrl, sessionUser }: PostCardProps) {
         <Button onClick={setVoteDesc} variant="ghost" leftIcon={<Trophy />}>
           Meilleur
         </Button>
+
         <Button
           onClick={setCommentDesc}
           variant="ghost"

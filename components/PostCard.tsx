@@ -104,6 +104,7 @@ function PostCard({
         alignItems={"center"}
         justifyContent={"space-between"}
         direction={{ base: "column", sm: "row" }}
+        mt={{ base: 2, sm: 0 }}
       >
         <NextLink href={`/p/${tagName}/${identifier}/${slug}`} passHref>
           <Button
