@@ -48,7 +48,7 @@ const LoginComp = ({ providers, csrfToken, signIn }: any) => {
           </ModalFooter>
         </ModalContent>
       </Modal>
-      <Heading textAlign={"center"} mt={40} as="h1">
+      <Heading textAlign={"center"} mt={{ base: 4, sm: 40 }} as="h1">
         Bienvenue chez Groupomania
       </Heading>
       <Text my={8} maxW={{ base: "100%", sm: "70%" }}>
@@ -75,7 +75,7 @@ const LoginComp = ({ providers, csrfToken, signIn }: any) => {
             </Button>
           </form>
         </Box>
-        <Stack isInline marginTop={12}>
+        <Stack marginTop={12}>
           {Object.values(providers).map((provider: any) => {
             if (provider.name === "Email") {
               return;
