@@ -9,6 +9,7 @@ import TimeAgo from "react-timeago";
 import frenchStrings from "react-timeago/lib/language-strings/fr";
 // @ts-ignore
 import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
+import { userInfo } from "os";
 
 interface UserCardProps {
   user: UserType;
@@ -44,7 +45,17 @@ function UserCard({ user }: UserCardProps) {
           <Box mt="2">{user.body}</Box>
         </Box>
         <Link href={`/u/${user.name}`}>
-          <Avatar ml={8} name={user.name} src={`/api/images${user.image}`} />
+          <Avatar
+            ml={8}
+            name={user.name}
+            src={
+              user.image
+                ? user.image.includes("https://")
+                  ? `${user.image}`
+                  : `/api/images/${user.image}`
+                : ""
+            }
+          />
         </Link>
       </Flex>
     </Box>

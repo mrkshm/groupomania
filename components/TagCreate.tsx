@@ -50,10 +50,7 @@ function TagCreate({ sessionUser, tags, mutateTags }: any) {
       tagname: Yup.string()
         .min(3, "Un tag doit contenir au moins 3 caractères.")
         .max(20, "Un tag ne peut pas contenir plus de 30 caractères.")
-        .matches(
-          /^\S+$/,
-          "Le nom d'utilisateur·rice ne peut pas contenir des espaces."
-        )
+        .matches(/^\S+$/, "Le tag ne peut pas contenir des espaces.")
         .required("Ce champ doit être remplis.")
     }),
     onSubmit: async values => {
