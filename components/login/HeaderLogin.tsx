@@ -21,8 +21,9 @@ function HeaderLogin() {
               "/assets/logo-text-dark.png"
             )}
             alt="logo"
-            height={{ md: "100", base: "50" }}
-            mt={4}
+            // height={{ md: "100", base: "50" }}
+            width={{ base: "70%", md: "450px" }}
+            mt={{ base: 2, md: 4 }}
           ></chakra.img>
         </Flex>
         <Flex
