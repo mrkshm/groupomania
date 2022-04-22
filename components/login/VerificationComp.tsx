@@ -3,7 +3,7 @@ import { Heading, Text, Container } from "@chakra-ui/react";
 const LoginComp = () => {
   return (
     <Container maxW="70%" centerContent>
-      <Heading textAlign={"center"} mt={44} as="h1">
+      <Heading textAlign={"center"} mt={{ base: 4, sm: 44 }} as="h1">
         Bienvenue chez Groupomania
       </Heading>
       <Text my={8} maxW={{ base: "100%", sm: "70%" }}>

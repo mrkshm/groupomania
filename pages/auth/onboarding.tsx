@@ -6,7 +6,7 @@ import MetaHead from "../../components/MetaHead";
 import OnboardingForm from "../../components/login/OnboardingForm";
 import { getSession } from "next-auth/react";
 
-function Onboarding({ sessionUser }: any) {
+function Onboarding({ session }: any) {
   return (
     <Container maxW="container.xl" p={0}>
       <MetaHead />
@@ -33,8 +33,6 @@ Onboarding.getInitialProps = async (context: any) => {
     return;
   }
 
-  const sessionUser = session.user;
-
   if (session && session.user && session.user.name) {
     res.writeHead(302, {
       Location: "/"
@@ -44,6 +42,6 @@ Onboarding.getInitialProps = async (context: any) => {
   }
 
   return {
-    sessionUser
+    session
   };
 };
