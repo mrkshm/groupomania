@@ -174,7 +174,12 @@ function UserSidebar({ sessionUser, user, mutateUser }: UserSidebarProps) {
       </Text>
 
       <Box my={2}>
-        <Flex mb={4} gap={4} alignItems={"center"}>
+        <Flex
+          mb={4}
+          gap={4}
+          alignItems={"center"}
+          direction={{ base: "column", sm: "row" }}
+        >
           <Link href={`mailto:${user.email}`}>
             <Flex mt={1} gap={2}>
               <Mail />
