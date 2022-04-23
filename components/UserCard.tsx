@@ -24,6 +24,7 @@ function UserCard({ user }: UserCardProps) {
         alignItems={"flex-start"}
         mr={8}
         mt={8}
+        direction={{ base: "column-reverse", sm: "row" }}
       >
         <Box>
           <Flex alignItems={"center"} gap={4}>

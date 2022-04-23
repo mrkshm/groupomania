@@ -27,7 +27,7 @@ function UserList({ sessionUser }: SessionUserObjectType) {
   }
 
   return (
-    <Container maxW={{ base: "100vw", sm: "container.xl" }} p={0}>
+    <Container maxW={{ base: "600px", sm: "container.xl" }} p={0}>
       <MetaHead />
       <Header />
       <Flex ml={{ base: 6, sm: 0 }} justifyContent={"center"}>
