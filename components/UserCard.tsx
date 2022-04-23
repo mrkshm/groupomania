@@ -18,7 +18,7 @@ interface UserCardProps {
 function UserCard({ user }: UserCardProps) {
   const formatter = buildFormatter(frenchStrings);
   return (
-    <Box maxW={{ base: "100vw", sm: "2xl" }} mt={4}>
+    <Box maxW={{ base: "600px", sm: "2xl" }} mt={4}>
       <Flex
         justifyContent={"space-between"}
         alignItems={"flex-start"}
