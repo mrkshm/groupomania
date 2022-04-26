@@ -1,9 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/router";
 import { prisma } from "../../../../db";
-import { Box, Container, Spinner } from "@chakra-ui/react";
-import Header from "../../../../components/Header";
-import MetaHead from "../../../../components/MetaHead";
+import { Box, Spinner } from "@chakra-ui/react";
 import PostCardFull from "../../../../components/PostCardFull";
 import CommentFeed from "../../../../components/CommentFeed";
 import CreateComment from "../../../../components/CreateComment";
@@ -42,9 +40,7 @@ function PostPage({ sessionUser }: SessionUserObjectType) {
   }, [post]);
 
   return (
-    <Container maxW="container.xl" p={0}>
-      <MetaHead />
-      <Header />
+    <Box>
       {post ? (
         <Box>
           <PostCardFull
@@ -77,7 +73,7 @@ function PostPage({ sessionUser }: SessionUserObjectType) {
       ) : (
         <Spinner />
       )}
-    </Container>
+    </Box>
   );
 }
 

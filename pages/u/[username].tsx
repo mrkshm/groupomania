@@ -1,16 +1,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import {
-  Container,
-  Flex,
-  Box,
-  Heading,
-  Button,
-  Spinner
-} from "@chakra-ui/react";
-import Header from "../../components/Header";
-import MetaHead from "../../components/MetaHead";
+import { Flex, Box, Heading, Button, Spinner } from "@chakra-ui/react";
 import UserSidebar from "../../components/UserSidebar";
 import fetcher from "../../src/utils/fetcher";
 import { getSession, useSession } from "next-auth/react";
@@ -36,9 +27,7 @@ function Profile({ sessionUser }: SessionUserObjectType) {
   const [postCommentSwitcher, setPostCommentSwitcher] = useState("posts");
 
   return (
-    <Container maxW="container.xl" p={0}>
-      <MetaHead />
-      <Header />
+    <Box>
       {user ? (
         <Flex
           flexDirection={{ base: "column-reverse", sm: "row" }}
@@ -84,7 +73,7 @@ function Profile({ sessionUser }: SessionUserObjectType) {
       ) : (
         <Spinner />
       )}
-    </Container>
+    </Box>
   );
 }
 

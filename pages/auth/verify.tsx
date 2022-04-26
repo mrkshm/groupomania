@@ -19,6 +19,7 @@ function Verify() {
   );
 }
 
+Verify.authPage = true;
 export default Verify;
 
 export async function getServerSideProps(context: any) {

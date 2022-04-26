@@ -18,6 +18,7 @@ function Onboarding({ session }: any) {
     </Container>
   );
 }
+Onboarding.authPage = true;
 
 export default Onboarding;
 

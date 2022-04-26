@@ -1,17 +1,9 @@
-import React, { useContext } from "react";
-import {
-  Box,
-  Container,
-  Flex,
-  Image as ChakraImage,
-  Spinner
-} from "@chakra-ui/react";
-import Header from "../../components/Header";
+import React from "react";
+import { Box, Flex, Spinner } from "@chakra-ui/react";
 import UserCardAdmin from "../../components/admin/UserCardAdmin";
 import { UserType } from "../../src/types";
 import useSWR from "swr";
 import fetcher from "../../src/utils/fetcher";
-import MetaHead from "../../components/MetaHead";
 import { getSession } from "next-auth/react";
 import { prisma } from "../../db";
 
@@ -27,9 +19,7 @@ function Users() {
   }
 
   return (
-    <Container maxW="container.xl" p={0}>
-      <MetaHead />
-      <Header />
+    <Box>
       <Flex ml={{ base: 6, sm: 0 }} justifyContent={"center"}>
         <Box>
           {users ? (
@@ -41,7 +31,7 @@ function Users() {
           )}
         </Box>
       </Flex>
-    </Container>
+    </Box>
   );
 }
 

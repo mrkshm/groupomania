@@ -1,10 +1,7 @@
 import React from "react";
-import { getSession, useSession } from "next-auth/react";
-import { Container, Flex, Box, Spinner } from "@chakra-ui/react";
-import Head from "next/head";
-import Header from "../components/Header";
+import { getSession } from "next-auth/react";
+import { Flex, Box, Spinner } from "@chakra-ui/react";
 import CodesOfConduct from "../components/CodesOfConduct";
-import { useRouter } from "next/router";
 import TagCreate from "../components/TagCreate";
 import PostCreate from "../components/PostCreate";
 import fetcher from "../src/utils/fetcher";
@@ -21,17 +18,7 @@ function Create({ sessionUser }: any) {
   } = useSWR(getTagsUrl, fetcher);
 
   return (
-    <Container maxW="container.xl" p={0}>
-      <Head>
-        <title>Groupomania</title>
-        <meta
-          name="description"
-          content="Le reseau social de votre entreprise."
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Header />
-
+    <Box>
       <Flex
         flexDirection={{ base: "column", sm: "row" }}
         justifyContent="center"
@@ -55,7 +42,7 @@ function Create({ sessionUser }: any) {
           )}
         </Flex>
       </Flex>
-    </Container>
+    </Box>
   );
 }
 

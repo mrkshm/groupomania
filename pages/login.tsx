@@ -28,6 +28,8 @@ function Login({ providers, csrfToken }: any) {
   );
 }
 
+Login.authPage = true;
+
 export default Login;
 
 Login.getInitialProps = async (context: any) => {

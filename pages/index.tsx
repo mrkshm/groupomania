@@ -1,9 +1,7 @@
 import type { NextPage } from "next";
-import MetaHead from "../components/MetaHead";
 import { prisma } from "../db";
 import Tags from "../components/Tags";
-import { Container, Box, Flex, Spinner } from "@chakra-ui/react";
-import Header from "../components/Header";
+import { Box, Flex, Spinner } from "@chakra-ui/react";
 import News from "../components/News";
 import Input from "../components/Input";
 import { getSession, useSession } from "next-auth/react";
@@ -20,9 +18,7 @@ const Home: NextPage = articles => {
   const sessionUser = session.data?.user;
 
   return (
-    <Container maxW="container.xl" p={0}>
-      <MetaHead />
-      <Header />
+    <Box>
       <Flex
         flexDirection={{ base: "column-reverse", sm: "row" }}
         justifyContent="center"
@@ -54,7 +50,7 @@ const Home: NextPage = articles => {
           </Box>
         </Box>
       </Flex>
-    </Container>
+    </Box>
   );
 };
 

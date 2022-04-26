@@ -30,7 +30,7 @@ handler.get(
     try {
       const user: any = await prisma.user.findUnique({
         where: {
-          name: username.replace("%20", " ")
+          name: username.replace("%20", " ").replace("%C3%A9", "é")
         },
         include: {
           _count: {

@@ -1,9 +1,7 @@
 import React from "react";
 import { prisma } from "../../../../db";
 import { getSession } from "next-auth/react";
-import { Container, Flex, Box, Spinner } from "@chakra-ui/react";
-import Header from "../../../../components/Header";
-import MetaHead from "../../../../components/MetaHead";
+import { Flex, Box, Spinner } from "@chakra-ui/react";
 import CodesOfConduct from "../../../../components/CodesOfConduct";
 import { SessionUserObjectType } from "../../../../src/types";
 import { useRouter } from "next/router";
@@ -39,10 +37,7 @@ function EditPost({ sessionUser }: SessionUserObjectType) {
   }
 
   return (
-    <Container maxW="container.xl" p={0}>
-      <MetaHead />
-      <Header />
-
+    <Box>
       <Flex
         flexDirection={{ base: "column", sm: "row" }}
         justifyContent="center"
@@ -69,7 +64,7 @@ function EditPost({ sessionUser }: SessionUserObjectType) {
           />
         </Box>
       </Flex>
-    </Container>
+    </Box>
   );
 }
 

@@ -1,9 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
-import { Container, Flex, Box, Heading, Spinner } from "@chakra-ui/react";
+import { Flex, Box, Heading, Spinner } from "@chakra-ui/react";
 import { useSession } from "next-auth/react";
-import Header from "../../../components/Header";
-import MetaHead from "../../../components/MetaHead";
 import Feed from "../../../components/Feed";
 
 function TagPage() {
@@ -14,9 +12,7 @@ function TagPage() {
   const { tag } = router.query;
 
   return (
-    <Container maxW="container.xl" p={0}>
-      <MetaHead />
-      <Header />
+    <Box>
       <Flex
         flexDirection={{ base: "column", sm: "row" }}
         justifyContent="center"
@@ -44,7 +40,7 @@ function TagPage() {
           </Box>
         </Box>
       </Flex>
-    </Container>
+    </Box>
   );
 }
 
