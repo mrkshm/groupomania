@@ -17,7 +17,7 @@ handler.post(
     if (!session || !session.user) {
       return res.status(500).json({ message: "Il y avait un erreur" });
     }
-
+    // @ts-ignore
     const uId = session.user.id;
     if (!uId) {
       return res.status(401).json({ message: "Pas connecté ?" });
