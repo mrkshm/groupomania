@@ -53,7 +53,6 @@ handler.get(
     if (!session || !session.user) {
       return res.status(401).json({ error: "pas autorisé(e)" });
     }
-
     // @ts-ignore
     const uId = session.user.id;
     if (!uId) {
