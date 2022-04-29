@@ -9,6 +9,7 @@ import fs from "fs";
 import { getSession } from "next-auth/react";
 import fileSaver from "../../../src/utils/fileSaver";
 import deleteFile from "../../../src/utils/deleteFile";
+import { slugify } from "../../../src/utils/helpers";
 
 interface GetRequest extends NextApiRequest {
   params: { userId: string };
@@ -68,7 +69,6 @@ handler.put(
     const solicitorId = req.body.userId[0];
     // @ts-ignore
     if (solicitorId !== sessionUser.id) {
-      console.log("users not identidal");
       return res.status(401).json({ message: "Non autorisé" });
     }
 
@@ -107,6 +107,7 @@ handler.put(
     }
 
     user.name = newUsername ? newUsername.trim() : user.name;
+    user.slug = newUsername ? slugify(newUsername.trim()) : user.slug;
     user.body = newBody ? newBody.trim() : user.body;
     user.email = newEmail ? newEmail.trim() : user.email;
     user.image = newImageName ? newImageName : user.image;
@@ -118,6 +119,7 @@ handler.put(
         },
         data: {
           name: user.name,
+          slug: user.slug,
           body: user.body,
           email: user.email,
           image: user.image

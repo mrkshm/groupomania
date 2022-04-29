@@ -8,6 +8,7 @@ import { prisma } from "../../db";
 import fs from "fs";
 import { getSession } from "next-auth/react";
 import fileSaver from "../../src/utils/fileSaver";
+import { slugify } from "../../src/utils/helpers";
 
 interface ImageFile extends File {
   originalFilename: string;
@@ -66,6 +67,7 @@ handler.post(async (req: Request, res: NextApiResponse) => {
     },
     data: {
       name: req.body.name[0],
+      slug: slugify(req.body.name[0]),
       body: req.body.body[0],
       image: newImageName
     }

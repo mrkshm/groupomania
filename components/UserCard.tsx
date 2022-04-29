@@ -1,6 +1,6 @@
 import React from "react";
 import NextLink from "next/link";
-import { UserType } from "../src/types";
+import type { User } from "@prisma/client";
 import { Avatar, Box, Flex, Link, Text } from "@chakra-ui/react";
 import { Mail } from "iconoir-react";
 
@@ -9,13 +9,13 @@ import TimeAgo from "react-timeago";
 import frenchStrings from "react-timeago/lib/language-strings/fr";
 // @ts-ignore
 import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
-import { userInfo } from "os";
 
 interface UserCardProps {
-  user: UserType;
+  user: User;
 }
 
 function UserCard({ user }: UserCardProps) {
+  console.log("user is", user);
   const formatter = buildFormatter(frenchStrings);
   return (
     <Box maxW={{ base: "600px", sm: "2xl" }} mt={4}>
@@ -28,7 +28,7 @@ function UserCard({ user }: UserCardProps) {
       >
         <Box>
           <Flex alignItems={"center"} gap={4}>
-            <NextLink passHref href={`/u/${user.name}`}>
+            <NextLink passHref href={`/u/${user.slug}`}>
               <Link color={"none"} fontSize={"xl"}>
                 {user.name}{" "}
               </Link>
@@ -45,10 +45,10 @@ function UserCard({ user }: UserCardProps) {
           </Text>
           <Box mt="2">{user.body}</Box>
         </Box>
-        <Link href={`/u/${user.name}`}>
+        <Link href={`/u/${user.slug}`}>
           <Avatar
             ml={8}
-            name={user.name}
+            name={user.name as string | undefined}
             src={
               user.image
                 ? user.image.includes("https://")

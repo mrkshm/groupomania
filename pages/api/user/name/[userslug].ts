@@ -9,7 +9,7 @@ import { getSession } from "next-auth/react";
 import fileSaver from "../../../../src/utils/fileSaver";
 
 interface GetRequest extends NextApiRequest {
-  params: { username: string };
+  params: { userslug: string };
 }
 
 interface PutRequest extends NextApiRequest {
@@ -23,14 +23,14 @@ const handler = nextConnect({ attachParams: true });
 handler.use(middleware);
 
 handler.get(
-  "api/user/name/:username",
+  "api/user/name/:userslug",
   async (req: GetRequest, res: NextApiResponse) => {
-    const { username } = req.params;
+    const { userslug } = req.params;
 
     try {
       const user: any = await prisma.user.findUnique({
         where: {
-          name: username.replace("%20", " ").replace("%C3%A9", "é")
+          slug: userslug
         },
         include: {
           _count: {
