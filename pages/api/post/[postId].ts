@@ -28,7 +28,7 @@ handler.delete(
       console.log("no one here");
       return;
     }
-
+    // @ts-ignore
     const uId = session.user.id;
 
     if (!uId) {

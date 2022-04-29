@@ -11,7 +11,7 @@ export default async function handler(
   if (!session || !session.user) {
     return res.status(401).json({ message: "Pas autorisé" });
   }
-
+  // @ts-ignore
   const userId = session.user.id;
   if (!userId) {
     return res.status(401).json({ message: "Pas authentifié ?" });

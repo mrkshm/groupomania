@@ -22,7 +22,7 @@ handler.post(async (req: Request, res: NextApiResponse) => {
   if (!session || !session.user) {
     return res.status(401).json({ message: "Pas autorisé" });
   }
-
+  // @ts-ignore
   const uId = session.user.id;
   if (!uId) {
     return res.status(401).json({ message: "Pas connecté ?" });
