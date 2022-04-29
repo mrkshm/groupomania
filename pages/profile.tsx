@@ -22,8 +22,6 @@ function Profile({ sessionUser }: SessionUserObjectType) {
 
   const [postCommentSwitcher, setPostCommentSwitcher] = useState("posts");
 
-  console.log("user is ", user);
-
   return (
     <Box>
       {user ? (
