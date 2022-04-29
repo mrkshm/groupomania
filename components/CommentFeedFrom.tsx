@@ -71,7 +71,7 @@ function CommentFeed({ userId, uId }: any) {
         <Heading size={"lg"} mb={8} ml={{ base: 4, sm: 0 }}>
           Les commentaires
         </Heading>
-        <Flex gap={8} my={8}>
+        <Flex gap={8} my={8} direction={{ base: "column", sm: "row" }}>
           <Button onClick={setDateDesc} variant="ghost" leftIcon={<Flower />}>
             Nouveau
           </Button>
