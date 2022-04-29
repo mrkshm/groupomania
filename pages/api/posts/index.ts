@@ -8,7 +8,6 @@ import { getSession } from "next-auth/react";
 import imageNamer from "../../../src/utils/imageNamer";
 import fileSaver from "../../../src/utils/fileSaver";
 
-// TODO update type definition for req.files
 interface Request extends NextApiRequest {
   files: any;
 }
@@ -23,7 +22,7 @@ handler.post(async (req: Request, res: NextApiResponse) => {
   if (!session || !session.user) {
     return res.status(401).json({ message: "Pas autorisé" });
   }
-  // @ts-ignore
+
   const uId = session.user.id;
   if (!uId) {
     return res.status(401).json({ message: "Pas connecté ?" });
@@ -78,7 +77,7 @@ handler.get(async (req: NextApiRequest, res: NextApiResponse) => {
   if (!session || !session.user) {
     return res.status(401).json({ message: "Pas autorisé" });
   }
-  // @ts-ignore
+
   const uId = session.user.id;
   if (!uId) {
     return res.status(401).json({ message: "Pas connecté ?" });

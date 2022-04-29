@@ -9,13 +9,11 @@ import {
   Textarea,
   SimpleGrid,
   GridItem,
-  Button,
-  Spinner
+  Button
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { getSession } from "next-auth/react";
 import fetchPoster from "../../src/utils/fetchPoster";
 
 function OnboardingForm() {

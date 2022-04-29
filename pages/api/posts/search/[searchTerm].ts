@@ -21,7 +21,6 @@ handler.get(
 
     try {
       const searchTermFormatted = `%${searchTerm.toLowerCase().trim()}%`;
-      // const result = await prisma.$queryRaw`SELECT * FROM "Post"`;
       const result =
         await prisma.$queryRaw`SELECT * FROM "Post" where (LOWER(title) LIKE ${searchTermFormatted} OR LOWER(body) LIKE ${searchTermFormatted}) LIMIT 30`;
       return res.status(200).json(result);

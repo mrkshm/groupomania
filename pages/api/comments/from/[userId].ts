@@ -14,13 +14,11 @@ handler.use(middleware);
 handler.get(
   "api/comments/from/:userId",
   async (req: Request, res: NextApiResponse) => {
-    console.log("START");
-
     const session = await getSession({ req });
     if (!session || !session.user) {
       return res.status(401).json({ message: "Pas autorisé" });
     }
-    // @ts-ignore
+
     const uId = session.user.id;
     if (!uId) {
       return res.status(401).json({ message: "Pas connecté ?" });
@@ -75,7 +73,6 @@ handler.get(
     } catch (error) {
       return res.status(500).json({ message: "Il y avait un erreur." });
     }
-    // return res.status(200).json({ message: "ok" });
   }
 );
 

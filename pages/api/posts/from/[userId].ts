@@ -5,7 +5,6 @@ import nextConnect from "next-connect";
 const path = require("path");
 import { getSession } from "next-auth/react";
 
-// TODO update type definition for req.files
 interface Request extends NextApiRequest {
   params: { userId: string };
 }

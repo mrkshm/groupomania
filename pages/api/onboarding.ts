@@ -38,10 +38,8 @@ handler.post(async (req: Request, res: NextApiResponse) => {
   }
 
   const email: string | null | undefined = session?.user?.email;
-  console.log("email is ", email);
 
   if (!email) {
-    console.log("No user detected. ABORTING.");
     return res
       .status(500)
       .json({ message: "Something happened during onboarding" });

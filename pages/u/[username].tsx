@@ -26,6 +26,10 @@ function Profile({ sessionUser }: SessionUserObjectType) {
 
   const [postCommentSwitcher, setPostCommentSwitcher] = useState("posts");
 
+  if (user && user.message == "Utilisateur pas trouvé") {
+    router.push("/u");
+  }
+
   return (
     <Box>
       {user ? (

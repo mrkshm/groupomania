@@ -1,10 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-
 import nextConnect from "next-connect";
-const path = require("path");
-
-import fs from "fs";
-
 import { getImage } from "../../../src/utils/aws";
 
 interface Request extends NextApiRequest {

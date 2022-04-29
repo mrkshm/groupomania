@@ -81,7 +81,7 @@ function CommentFeed({
   return (
     <Flex mt={8} alignItems={"center"} flexDirection={"column"}>
       {!comments || comments.length < 2 ? null : (
-        <Flex gap={8} my={2}>
+        <Flex gap={8} my={2} direction={{ base: "column", sm: "row" }}>
           <Button onClick={setVoteDesc} variant="ghost" leftIcon={<Trophy />}>
             Meilleur
           </Button>

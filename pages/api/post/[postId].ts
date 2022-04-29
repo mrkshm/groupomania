@@ -28,12 +28,11 @@ handler.delete(
       console.log("no one here");
       return;
     }
-    // @ts-ignore
+
     const uId = session.user.id;
 
     if (!uId) {
-      console.log("no uId");
-      return;
+      return res.status(401).json({ error: "pas connecté ?" });
     }
 
     const localUser = await prisma.user.findUnique({

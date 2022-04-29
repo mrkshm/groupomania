@@ -78,8 +78,6 @@ handler.put(
       return res.status(500).json({ message: "Utilisateur pas trouvé" });
     }
 
-    console.log("ok, user is", user);
-
     if (req.files.image) {
       const imageFile = req.files.image[0];
 
@@ -90,8 +88,6 @@ handler.put(
       }
 
       newImageName = imageNamer(imageFile.originalFilename);
-
-      console.log("new name is", newImageName);
 
       await fileSaver(imageFile, newImageName);
 
