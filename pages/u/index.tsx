@@ -2,7 +2,8 @@ import React from "react";
 import { prisma } from "../../db";
 import { Box, Flex, Spinner } from "@chakra-ui/react";
 import UserCard from "../../components/UserCard";
-import { SessionUserObjectType, UserType } from "../../src/types";
+import { SessionUserObjectType } from "../../src/types";
+import type { User } from "@prisma/client";
 import useSWR from "swr";
 import fetcher from "../../src/utils/fetcher";
 import { getSession } from "next-auth/react";
@@ -26,11 +27,11 @@ function UserList({ sessionUser }: SessionUserObjectType) {
             users
               .filter(
                 sessionUser.isAdmin
-                  ? (user: UserType) => user
-                  : (user: UserType) => user.isActive
+                  ? (user: User) => user
+                  : (user: User) => user.isActive
               )
-              .sort((a: UserType, b: UserType) => (a.name > b.name ? -1 : 1))
-              .map((user: UserType) => <UserCard user={user} key={user.id} />)
+              .sort((a: User, b: User) => (a.name! > b.name! ? -1 : 1))
+              .map((user: User) => <UserCard user={user} key={user.id} />)
           ) : (
             <Spinner />
           )}
