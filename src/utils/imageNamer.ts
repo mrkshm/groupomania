@@ -8,7 +8,7 @@ const imageNamer = (originalName: string) => {
   const imageName = nameParsed.name.split(" ").join("_");
   const imageExt = nameParsed.ext;
 
-  const newImageName = imageName + "_" + Date.now() + imageExt;
+  const newImageName = imageName + "_" + Date.now() + imageExt.toLowerCase();
   return newImageName;
 };
 
