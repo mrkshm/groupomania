@@ -30,7 +30,7 @@ function UserList({ sessionUser }: SessionUserObjectType) {
                   ? (user: User) => user
                   : (user: User) => user.isActive
               )
-              .sort((a: User, b: User) => (a.name! > b.name! ? -1 : 1))
+              .sort((a: User, b: User) => (a.slug! > b.slug! ? 1 : -1))
               .map((user: User) => <UserCard user={user} key={user.id} />)
           ) : (
             <Spinner />
