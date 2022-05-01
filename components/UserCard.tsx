@@ -33,7 +33,7 @@ function UserCard({ user }: UserCardProps) {
                 {user.name}{" "}
               </Link>
             </NextLink>
-            <Link href={`mailto:${user.email}`}>
+            <Link href={`mailto:test@test.com`}>
               <Box mt={1}>
                 <Mail />
               </Box>

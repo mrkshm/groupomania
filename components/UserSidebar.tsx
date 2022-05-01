@@ -180,10 +180,10 @@ function UserSidebar({ sessionUser, user, mutateUser }: UserSidebarProps) {
           alignItems={"center"}
           direction={{ base: "column", sm: "row" }}
         >
-          <Link href={`mailto:${user.email}`}>
+          <Link href={`mailto:test@test.com`}>
             <Flex mt={1} gap={2}>
               <Mail />
-              {user.email}
+              <Text>dummy email</Text>
             </Flex>
           </Link>
           {sessionUser.id === user.id ? (
