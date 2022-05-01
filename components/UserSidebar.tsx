@@ -34,6 +34,7 @@ import EmailMod from "./profileMod/EmailMod";
 import BodyMod from "./profileMod/BodyMod";
 import ImageMod from "./profileMod/ImageMod";
 import { SessionUserType, UserType } from "../src/types";
+import DeleteAccordion from "./profileMod/DeleteAccordion";
 import { signOut } from "next-auth/react";
 
 interface UserSidebarProps {
@@ -247,26 +248,7 @@ function UserSidebar({ sessionUser, user, mutateUser }: UserSidebarProps) {
         ) : null}
       </Box>
 
-      {sessionUser.id === user.id ? (
-        <Accordion allowToggle>
-          <AccordionItem>
-            <AccordionButton mb={4} mt={8}>
-              <Box mr={4}>Autres actions</Box>
-              <AccordionIcon />
-            </AccordionButton>
-            <AccordionPanel>
-              <Button colorScheme={"blue"} onClick={closeAccount}>
-                Dèsactiver le compte
-              </Button>
-            </AccordionPanel>
-            <AccordionPanel>
-              <Button colorScheme={"red"} onClick={annihilateAccount}>
-                Supprimer le compte
-              </Button>
-            </AccordionPanel>
-          </AccordionItem>
-        </Accordion>
-      ) : null}
+      {sessionUser.id === user.id ? <DeleteAccordion userId={user.id} /> : null}
     </Box>
   ) : (
     <Spinner />
