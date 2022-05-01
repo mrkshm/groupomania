@@ -9,6 +9,7 @@ import fs from "fs";
 import { getSession } from "next-auth/react";
 import fileSaver from "../../src/utils/fileSaver";
 import { slugify } from "../../src/utils/helpers";
+import { LOADIPHLPAPI } from "dns";
 
 interface ImageFile extends File {
   originalFilename: string;
@@ -28,7 +29,7 @@ handler.post(async (req: Request, res: NextApiResponse) => {
 
   const existingUsername = await prisma.user.findUnique({
     where: {
-      name: req.body.name[0]
+      slug: slugify(req.body.name[0])
     }
   });
 
@@ -61,17 +62,27 @@ handler.post(async (req: Request, res: NextApiResponse) => {
     await fileSaver(imageFile, newImageName);
   }
 
-  const updateUser = await prisma.user.update({
-    where: {
-      email: email
-    },
-    data: {
-      name: req.body.name[0],
-      slug: slugify(req.body.name[0]),
-      body: req.body.body[0],
-      image: newImageName
-    }
-  });
+  console.log("data is", req.body.name[0], req.body.body[0], newImageName);
+
+  try {
+    const updateUser = await prisma.user.update({
+      where: {
+        email: email
+      },
+      data: {
+        name: req.body.name[0],
+        slug: slugify(req.body.name[0]),
+        body: req.body.body[0],
+        image: newImageName
+      }
+    });
+  } catch (error) {
+    return res.status(500).json({ error: "Onboarding n'a pas reussi." });
+  }
+
+  return res
+    .status(201)
+    .json({ message: "L'utilisateur·rice a bien été créé." });
 });
 
 export const config = {

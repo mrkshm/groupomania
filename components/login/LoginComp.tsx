@@ -55,7 +55,7 @@ const LoginComp = ({ providers, csrfToken, signIn }: any) => {
       <Text mt={8} mb={4} maxW={{ base: "100%", sm: "70%" }}>
         Vous pouvez vous inscrire (ou, si vous avez déjà un compte, vous
         connecter) avec seulement votre adresse email, ou avec votre compte
-        GitHub. C&apos;est à vous !{" "}
+        GitHub ou Google. C&apos;est à vous !{" "}
       </Text>
       <CommentFaire />
       <Box marginTop={12}>

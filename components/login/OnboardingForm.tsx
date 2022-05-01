@@ -25,14 +25,12 @@ function OnboardingForm() {
     const url = "/api/onboarding";
     try {
       const res = await fetchPoster(url, payload);
-      console.log(res);
 
-      if (!res.ok) {
-        console.log("error is", res);
+      if (res.message !== "L'utilisateur·rice a bien été créé.") {
         setErrorMessage(res.message);
         return;
       }
-      // router.push("/");
+      router.push("/");
     } catch (error) {
       console.log("Il y avait un erreur.");
     }
@@ -67,7 +65,6 @@ function OnboardingForm() {
       user.append("image", values.image);
 
       onboard(user);
-      router.push("/");
     }
   });
 
