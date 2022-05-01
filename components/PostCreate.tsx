@@ -143,7 +143,7 @@ function PostCreate({ tags }: any) {
                     </option>
                   ))}
           </Select>
-          {formik.errors.tag ? (
+          {formik.touched.tag && formik.errors.tag ? (
             <FormErrorMessage>{formik.errors.tag}</FormErrorMessage>
           ) : null}
         </FormControl>
