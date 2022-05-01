@@ -122,7 +122,7 @@ function PostCreate({ tags }: any) {
           </Button>
         </FormControl>
 
-        <FormControl mt={8}>
+        <FormControl mt={8} isInvalid={formik.errors.tag !== undefined}>
           <FormLabel htmlFor="tag">Choisir un tag</FormLabel>
           <Select
             maxW={64}
@@ -143,6 +143,9 @@ function PostCreate({ tags }: any) {
                     </option>
                   ))}
           </Select>
+          {formik.errors.tag ? (
+            <FormErrorMessage>{formik.errors.tag}</FormErrorMessage>
+          ) : null}
         </FormControl>
 
         <FormControl>
