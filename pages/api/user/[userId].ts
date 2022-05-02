@@ -222,7 +222,7 @@ handler.post("api/user/:userId", async (req: Request, res: NextApiResponse) => {
     });
     return res.status(201).json(deletedUser);
   } catch (error) {
-    return res.status(500).json({ message: "Utilisateur pas supprimé." });
+    return res.status(500).json(error);
   }
 });
 
