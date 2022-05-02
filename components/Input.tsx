@@ -33,7 +33,7 @@ function Input({ sessionUser }: any) {
         <Flex onClick={createPost} gap={4} alignItems={"center"}>
           <Avatar
             name={sessionUser.name ? sessionUser.name : sessionUser.email}
-            src={`/api/images/${userImage}`}
+            src={`/${userImage}`}
           />
           <ChakraInput placeholder="Créer une publication" size="lg" />
           <AddMediaImage fontSize={"28"} />

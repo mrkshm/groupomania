@@ -46,10 +46,10 @@ function DeleteAccordion({ userId }: AccordionProps) {
     const res = await fetch(url, { method: "POST" });
     const resJ = await res.json();
 
-    // if (!res.ok) {
-    //   console.log(resJ);
-    //   return;
-    // }
+    if (!res.ok) {
+      console.log(resJ);
+      return;
+    }
 
     signOut();
   };

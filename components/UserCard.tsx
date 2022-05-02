@@ -53,7 +53,7 @@ function UserCard({ user }: UserCardProps) {
               user.image
                 ? user.image.includes("https://")
                   ? `${user.image}`
-                  : `/api/images/${user.image}`
+                  : `/${user.image}`
                 : ""
             }
           />
