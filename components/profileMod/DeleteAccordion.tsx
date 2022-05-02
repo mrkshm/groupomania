@@ -43,10 +43,6 @@ function DeleteAccordion({ userId }: AccordionProps) {
   const annihilateAccount = async () => {
     const url = `/api/user/${userId}`;
     const res = await fetch(url, { method: "POST" });
-    if (!res.ok) {
-      console.log("Il y avait un erreur.");
-      return;
-    }
     signOut();
   };
 
