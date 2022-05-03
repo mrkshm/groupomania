@@ -202,7 +202,7 @@ function UserSidebar({ sessionUser, user, mutateUser }: UserSidebarProps) {
 
       {sessionUser.id === user.id ? (
         <Button mt={2} id="body" onClick={changeProfile as any} size={"xs"}>
-          Modifier votre descrition
+          Modifier votre description
         </Button>
       ) : null}
       <Box mb={4}>
