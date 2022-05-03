@@ -20,6 +20,7 @@ import frenchStrings from "react-timeago/lib/language-strings/fr";
 // @ts-ignore
 import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
 import voteHelper from "../src/utils/voteHelper";
+import DeleteButton from "./DeleteButton";
 
 interface PostCardFullProps {
   post: any;
@@ -120,16 +121,8 @@ function PostCardFull({
               Edit
             </Button>
           ) : null}
-          {sessionUser.isAdmin ? (
-            <Button
-              mr={4}
-              mt={{ base: 2, sm: 0 }}
-              onClick={editPost}
-              colorScheme={"red"}
-            >
-              Supprimer
-            </Button>
-          ) : null}
+          {console.log("post id is", post.id)}
+          {sessionUser.isAdmin ? <DeleteButton postId={post.id} /> : null}
 
           <Flex gap={1} alignItems={"center"}>
             {/* Upvote */}

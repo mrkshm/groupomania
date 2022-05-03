@@ -30,10 +30,12 @@ import fetchPoster from "../src/utils/fetchPoster";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { TagType } from "../src/types";
+import { AnyLengthString } from "aws-sdk/clients/comprehend";
 
 function TagCreate({ sessionUser, tags, mutateTags }: any) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [errorMessage, setErrorMessage] = useState("");
+  const initialRef = React.useRef();
 
   const cleanTags = async () => {
     const url = "/api/tags";
@@ -99,7 +101,7 @@ function TagCreate({ sessionUser, tags, mutateTags }: any) {
           </Tooltip>
         ) : null}
       </Flex>
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Créer un nouveau tag</ModalHeader>
@@ -115,6 +117,7 @@ function TagCreate({ sessionUser, tags, mutateTags }: any) {
                   Le nom pour votre tag (20 caractères max)
                 </FormLabel>
                 <Input
+                  ref={initialRef as any}
                   id="tagname"
                   name="tagname"
                   value={formik.values.tagname}

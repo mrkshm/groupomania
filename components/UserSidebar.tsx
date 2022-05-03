@@ -184,7 +184,7 @@ function UserSidebar({ sessionUser, user, mutateUser }: UserSidebarProps) {
           <Link href={`mailto:test@test.com`}>
             <Flex mt={1} gap={2}>
               <Mail />
-              <Text>dummy email</Text>
+              {user.email}
             </Flex>
           </Link>
           {sessionUser.id === user.id ? (
@@ -202,7 +202,7 @@ function UserSidebar({ sessionUser, user, mutateUser }: UserSidebarProps) {
 
       {sessionUser.id === user.id ? (
         <Button mt={2} id="body" onClick={changeProfile as any} size={"xs"}>
-          Modifier votre descrition
+          Modifier votre description
         </Button>
       ) : null}
       <Box mb={4}>
@@ -215,7 +215,7 @@ function UserSidebar({ sessionUser, user, mutateUser }: UserSidebarProps) {
               user.image
                 ? user.image.includes("https://")
                   ? `${user.image}`
-                  : `/api/images/${user.image}`
+                  : `/${user.image}`
                 : ""
             }
           />

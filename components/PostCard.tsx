@@ -95,9 +95,7 @@ function PostCard({
       >
         <Box mt={2}>{body ? <Text noOfLines={3}>{body}</Text> : null}</Box>
         <Box mt={2}>
-          {image === "" ? null : (
-            <ChakraImage w={"100px "} src={`/api/images/${image}`} />
-          )}
+          {image === "" ? null : <ChakraImage w={"100px "} src={`/${image}`} />}
         </Box>
       </Link>
       <Flex

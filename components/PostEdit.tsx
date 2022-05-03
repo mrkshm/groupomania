@@ -123,7 +123,7 @@ function PostEdit({ tags, post, sessionUser, mutatePost }: PostEditType) {
           <Box>
             {post.image ? (
               <Image
-                src={`/api/images/${post.image}`}
+                src={`/${post.image}`}
                 maxW="150px"
                 maxH="150px"
                 alt="Image du post"
@@ -132,7 +132,11 @@ function PostEdit({ tags, post, sessionUser, mutatePost }: PostEditType) {
           </Box>
         )}
         <FormControl
-          visibility={formik.values.deleteImage ? "hidden" : "visible"}
+          visibility={
+            formik.values.file || formik.values.deleteImage
+              ? "hidden"
+              : "visible"
+          }
         >
           <Flex gap={4}>
             <FormLabel htmlFor="deleteImage">
