@@ -132,7 +132,11 @@ function PostEdit({ tags, post, sessionUser, mutatePost }: PostEditType) {
           </Box>
         )}
         <FormControl
-          visibility={formik.values.deleteImage ? "hidden" : "visible"}
+          visibility={
+            formik.values.file || formik.values.deleteImage
+              ? "hidden"
+              : "visible"
+          }
         >
           <Flex gap={4}>
             <FormLabel htmlFor="deleteImage">

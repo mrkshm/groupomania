@@ -32,8 +32,8 @@ function PostCreate({ tags }: any) {
       title: Yup.string()
         .min(1)
         .max(50, "Le titre ne peut pas contenir plus de 50 caractères.")
-        .required(),
-      tag: Yup.string().required()
+        .required("Ce champ est requis."),
+      tag: Yup.string().required("Ce champ est requis.")
     }),
     onSubmit: values => {
       let post = new FormData();
