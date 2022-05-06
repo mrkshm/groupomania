@@ -38,7 +38,8 @@ function PostCard({
     userVote,
     commentCount,
     userId,
-    userName
+    userName,
+    userSlug
   },
   sessionUser
 }: PostCardProps) {
@@ -83,7 +84,7 @@ function PostCard({
       <Box fontSize="sm">
         <Flex gap={1} direction={{ base: "column", sm: "row" }}>
           <div>
-            Publié par <Link href={`/u/${userName}`}>{userName}</Link>
+            Publié par <Link href={`/u/${userSlug}`}>{userName}</Link>
           </div>
           <TimeAgo date={createdAt} formatter={formatter} />
         </Flex>

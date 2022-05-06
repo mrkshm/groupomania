@@ -40,6 +40,7 @@ export interface PostType {
   voteScore: number;
   commentCount: number;
   userVote?: number;
+  userSlug?: string;
 }
 
 export interface CommentType {

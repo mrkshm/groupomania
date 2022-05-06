@@ -55,7 +55,8 @@ handler.get(
           },
           user: {
             select: {
-              name: true
+              name: true,
+              slug: true
             }
           },
           postVotes: {
@@ -93,6 +94,7 @@ handler.get(
         post.commentCount = post._count.comments;
         post.tagName = post.tag.name;
         post.userName = post.user.name;
+        post.userSlug = post.user.slug;
         delete post.user;
         delete post.tag;
         delete post.votes;
