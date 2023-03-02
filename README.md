@@ -16,8 +16,3 @@ The main branch uses AWS, so if you want to try this project at home without muc
 
 After signing up for an accout, you can use Prisma Studio to make the user administrator (set _isAdmin_ to true). Once you have a user that is administrator, you can access the admin console at
 _/admin_.
-
-### It's alive
-
-There is a live version of this build at
-[https://vercel.com/mrkshm/groupomania](https://vercel.com/mrkshm/groupomania)
